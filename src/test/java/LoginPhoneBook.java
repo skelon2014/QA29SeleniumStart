@@ -18,7 +18,7 @@ public class LoginPhoneBook {
 
     @Test
     public void LoginTest() {
-        //open loginForm
+        //open //loginForm
         click(By.cssSelector("[href='/login']"));
         //fillEmail
         type(By.cssSelector("[placeholder = 'Email']"), "skelon+4@bk.ru");
