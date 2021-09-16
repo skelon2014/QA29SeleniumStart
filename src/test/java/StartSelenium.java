@@ -25,6 +25,8 @@ public class StartSelenium {
         //  wd.get("https://contacts-app.tobbymarshall815.vercel.app/home).");//tolko perehodit po ssilke. ne zapominaet istoriu
 
         WebElement element1 = wd.findElement(By.tagName("div"));
+        wd.findElement(By.cssSelector("div"));
+        wd.findElement(By.xpath("//div"));
 
         WebElement login = wd.findElement(By.cssSelector("[href='/login']"));
         login.click();
@@ -36,9 +38,16 @@ public class StartSelenium {
 
         System.out.println(eldiv2.getText());
         WebElement element2 = wd.findElement(By.id("root"));
+        wd.findElement(By.cssSelector("#root"));
+        wd.findElement(By.xpath("//*[@id='root']"));
+
         Thread.sleep(2000);
-    //    WebElement element3 = wd.findElement(By.className("login_login__3EHKB"));
-        WebElement element3 = wd.findElement(By.cssSelector(".login_login__3EHKB"));
+        WebElement element3 = wd.findElement(By.className("login_login__3EHKB"));
+        wd.findElement(By.cssSelector(".login_login__3EHKB"));
+        wd.findElement(By.xpath("//*[@class='login_login__3EHKB']"));
+
+        WebElement element4 = wd.findElement(By.cssSelector(".container"));
+        wd.findElement(By.xpath("//*[@class='container']"));
 
     }
 
