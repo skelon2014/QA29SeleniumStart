@@ -1,7 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,25 +15,28 @@ public class DemoQa {
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
-       JavascriptExecutor js = (JavascriptExecutor) wd;
+        JavascriptExecutor js = (JavascriptExecutor) wd;
         js.executeScript("document.querySelector('footer').style.display='none'");
-
     }
 
     @Test
     public void fillStudentForm() {
-        type(By.id("firstName"),"Sergey");
-        type(By.cssSelector("#lastName"),"Sergeev");
-        type(By.xpath("//*[@id='userEmail']"),"kselon@bk.ru");
-        wd.findElement(By.xpath("//label[.='Male']")).click();
-       // click(By.cssSelector("#gender-radio-1"));
-        type(By.id("userNumber"),"1234567890");
-        type(By.xpath("//*[@id='dateOfBirthInput']"),"17 October 1970");
+        type(By.id("firstName"), "Sergey");
+        type(By.cssSelector("#lastName"), "Sergeev");
+        type(By.xpath("//*[@id='userEmail']"), "kselon@bk.ru");
+        click(By.xpath("//label[.='Male']"));
+        type(By.id("userNumber"), "1234567890");
+        type(By.xpath("//*[@id='dateOfBirthInput']"), "17 October 1970");
 
-        wd.findElement(By.id("close-fixedban")).click();
-        wd.findElement(By.xpath("//button[@id='submit']")).click();
+        if (wd.findElement(By.id("close-fixedban")).isDisplayed()) {
+            click(By.id("close-fixedban"));
+        }
+        wd.findElement(By.xpath("//label[.='Sports']")).click();
 
-
+        if (wd.findElement(By.id("close-fixedban")).isDisplayed()) {
+            click(By.id("close-fixedban"));
+        }
+        click(By.xpath("//button[@id='submit']"));
     }
 
     //====================================================
@@ -44,6 +44,7 @@ public class DemoQa {
         WebElement element = wd.findElement(locator);
         element.click();
         element.clear();
+        element.sendKeys(Keys.CONTROL + "a");
         element.sendKeys(text);
     }
 
